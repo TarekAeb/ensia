@@ -1,0 +1,15 @@
+1. **The kernel** is the primary module of an operating system. and it consist of several modules like process management module, memory management, interrupt handler, file management
+
+2. The process management module is responsible for executing and managing programs, where the network management module is the responsible for Internet connections.
+
+3. The Shell is the module that provides the user with a GUI or CLI to interact with the system
+
+4. Hardware resources: CPU, RAM, SSD.
+Logical resources: process, virtual memory, network protocols, threads, file systems.
+
+5. The security module is the one responsible for the encryption for files, And the file management module is the one responsible for the file management 
+
+6. An example of an interrupt: is when you click on mouse 
+
+
+Last page 29 

@@ -1,0 +1,19 @@
+Employee number 1059 is assigned to project 122, starting on 07/03/2013 and ending on 13/11/2014. No assigned supervisor, and the employee's function is Designer, Manager.
+
+Employee number 1001 is assigned to project 122, starting on 08/03/2011 and ending on 28/06/2011. The supervisor number is 1059, with the name MERABAT, and the employee's function is Manager.
+
+Employee number 1022 is assigned to project 122, starting on 15/06/2011 and ending on 04/10/2011. The supervisor number is 1059, with the name MERABAT, and the employee's function is Developer.
+
+Employee number 1059 is assigned to project 103, starting on 12/09/2010 and ending on 01/11/2010. No assigned supervisor, and the employee's function is Designer, Manager.
+
+Employee number 1001 is assigned to project 208, starting on 15/06/2011 and ending on 12/10/2011. The supervisor number is 1059, with the name MERABAT, and the employee's function is Manager.
+
+Employee number 1059 is assigned to project 208, starting on 15/06/2011 and ending on 06/03/2012. No assigned supervisor, and the employee's function is Designer, Manager.
+
+Employee number 1022 is assigned to project 208, starting on 01/09/2011 and ending on 17/12/2011. The supervisor number is 1059, with the name MERABAT, and the employee's function is Developer.
+
+Employee number 1059 is assigned to project 133, starting on 06/11/2011 and ending on 19/02/2012. No assigned supervisor, and the employee's function is Designer, Manager.
+
+Employee number 1053 is assigned to project 208, starting on 01/09/2011 and ending on 06/03/2012. The supervisor number is 1026, with the name BOURAS, and the employee's function is Administrator.
+
+Employee number 1026 is assigned to project 208, starting on 19/08/2011 and ending on 06/03/2012. The supervisor number is 1059, with the name MERABAT, and the employee's function is Analyste, Manager.

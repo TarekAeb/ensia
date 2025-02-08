@@ -1,0 +1,76 @@
+-- exo2
+
+CREATE OR REPLACE TRIGGER ex2
+AFTER INSERT
+ON COURSE_ASSIGNMENT
+FOR EACH ROW
+DECLARE
+teacher_name TEACHER.FirstName%TYPE;
+BEGIN
+  
+SELECT FirstName into teacher_name from TEACHER WHERE TeacherId= :NEW.TeacherId;
+ 
+DBMS_OUTPUT.PUT_LINE(' a new course assignment is added to the teacher ' || teacher_name);
+END;
+/
+
+-- exo3
+
+SQL> CREATE OR REPLACE TRIGGER ex3                                                                     
+BEFORE UPDATE OF Salary                                                                                     
+ON TEACHER                                                                                        
+FOR EACH ROW                                                                                      
+BEGIN                                                                                             
+IF :OLD.Salary< :NEW.SALARY THEN
+RAISE_APPLICATION_ERROR(-20001, 'New Salary cannot be lower than the current salary.');
+END IF;
+END;
+/
+
+-- exo4
+
+CREATE OR REPLACE TRIGGER ex4
+BEFORE INSERT
+ON ENROLLMENT
+FOR EACH ROW 
+DECLARE
+v_count NUMBER;
+BEGIN
+  
+SELECT COUNT(*) into v_count FROM ENROLLMENT WHERE (StudentId= :New.StudentId AND CourseId = :New.CourseId);
+ 
+IF v_count != 0 THEN
+RAISE_APPLICATION_ERROR(-20002, 'student has already been enrolled in this course');
+END IF;
+ENd;
+/
+
+-- exo5
+
+CREATE OR REPLACE TRIGGER TOTAL_COURSES_TRIGGER
+AFTER INSERT OR DELETE ON COURSE_ASSIGNMENT
+FOR EACH ROW
+DECLARE
+   courses_number INTEGER;
+BEGIN
+   -- Handle INSERT and DELETE cases
+   IF INSERTING THEN
+      SELECT COUNT(*) INTO courses_number 
+      FROM COURSE_ASSIGNMENT 
+      WHERE TeacherId = :NEW.TeacherId;
+
+      UPDATE TEACHER 
+      SET Total_Courses = courses_number 
+      WHERE TeacherId = :NEW.TeacherId;
+
+   ELSIF DELETING THEN
+      SELECT COUNT(*) INTO courses_number 
+      FROM COURSE_ASSIGNMENT 
+      WHERE TeacherId = :OLD.TeacherId;
+
+      UPDATE TEACHER 
+      SET Total_Courses = courses_number 
+      WHERE TeacherId = :OLD.TeacherId;
+   END IF;
+END;
+/
