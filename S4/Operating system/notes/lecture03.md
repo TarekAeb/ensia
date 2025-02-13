@@ -113,3 +113,42 @@ There exist two types of interrupts namely:
 - System calls: aka traps it usually happen when a user program request an io operation it issue a system call
 
 #### Hardware Interrupts:
+
+These asynchronous interrupts are triggered by a hardware unit such as the timer/clock, keyboard, mouse, power button,
+. . ., device controllers or DMA, to get the attention from the CPU. They can be maskable (MI) or non-maskable (NMI).
+
+**Maskable**: These interrupts the CPU can choose to ignore them based on the current state and the priority like keyboard event, network traffic arrives.
+**Non maskable**: The interrupts that the CPU cannot ignore and they demand immediate attention.
+
+- There is also another type of classification as follow:
+  **INter processor interrupts**: These interrupts are used to signal other processors in a multiprocessor system. e.g., one processor core requests another processor core to stop when the system is shutting down by the first processor ($shutdown now).
+  **Spurious Interrupt**: A.k.a., phantom or ghost interrupt, is an unwanted hardware interrupt, e.g., when an interrupt that has been signaled to the processor and it is no longer required (or interrupt source disappeared), or buggy hardware..
+  **Raster interrupt**: This is a type of interrupts used in old monitors. It was employed to synchronize the display with the CPU’s processing speed. In these monitors, the electron beam that traced the screen’s pixels moved horizontally across the screen, line by line. A raster interrupt was generated at the end of each line, signaling the CPU that it could update the video memory with the next line’s data.
+
+* We call an interrupt storm the event where the operating system receives a large number of interrupts (from hardware) that consumes the majority of the processor’s time spurious signals, interrupt handler execution took too long, . . ., faulty drivers. The system becomes non-responsive.
+
+#### System calls:
+
+System calls Constitutes an interface between the user (programs) and the services that are made available by an operating system. They constitute a programmatic way in which a computer program requests a service from the operating system (e.g., reading from a file, writing to a file, creating a new process, allocating memory, free memory, sending packets through the network interface, sending a signal to another process, etc). Each operating system has its own system calls (e.g., GNU/Linux has 300, FreeBSD has 500, and Windows 7 has 700).
+
+- System calls can be grouped into six main categories:
+  **Process Control** These are system calls for managing processes. They include calls to end, abort, load, execute, create, and terminate processes.
+  **File Management** These are system calls for managing files. They include calls to create, delete, open, close, read, write, and reposition files.
+  **Device manipulation** These are system calls for managing devices. They include calls to request, release, read, write, and reposition devices (like network interfaces, printers, etc).
+  **Information maintenance** These are system calls for managing information. They include calls to get and set time, date, and system data.
+  **Communication** These are system calls for inter-process communication. They include calls to create, delete a network connection, send and receive messages, and transfer status information. They include syscalls such as pipe(), mmap(), shm open(), and gethostid().
+  **Protection** These are system calls for managing protection. They include calls to control access to resources, and to grant and revoke access rights.
+
+#### Hardware interrupts and polling:
+
+**Polling** Each time the CPU check each device if new information is available.
+**Interrupts** Here the device send a signal to the interrupt controller to request attention, The Cpu preempts running process to handle device request
+
+- The period of time from the arrival of an interrupt at the CPU to the start of the routine that services the interrupt is called the interrupt latency.
+- After each (user mode) instruction is executed, the CPU checks whether the interrupt controller has any interrupt pending. If an interrupt is there, the current process is “interrupted”, and the appropriate handler is executed.
+- Hence, after each instruction execution cycle, the processor check a flag “interrupt flag” in the FLAGS register to determine whether there is (or there are) any interrupt(s) pending. If the flag is set to 1, then at least one hardware interrupt is pending, and has to be serviced. To that end, the currently running process is interrupted and the corresponding interrupt service routine is invoked
+  ![Instruction execution and interrupt cycle](image-1.png)
+
+### Context-Switching
+
+During a process turnaround time (lifetime), the process may obtain the CPU for a while to execute some of its code, lose it for a while, then get it back to continue its execution till it terminates. Each time the process is interrupted to give the CPU to another process to execute, and then resumed to continue executing.
