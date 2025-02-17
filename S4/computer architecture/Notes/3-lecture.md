@@ -165,6 +165,9 @@ loop:
 end:
 ```
 
-#### Basic blocks:
+**Basic blocks:** a basic block is a sequence of instructions without a branches, except at the end.
 
-a basic block is a sequence of instructions without a branches, except at the end.
+**branch if less than (blt)** instruction compares the values in registers rs1 and rs2 and takes the branch if the value in rs1 is less than the value in rs2.
+**branch if greater than or equal (bge)** instruction compares the values in registers rs1 and rs2 and takes the branch if the value in rs1 is greater than or equal to the value in rs2.
+**branch if less than,unsigned** (bltu) instruction compares the values in registers rs1 and rs2 and takes the branch if the value in rs1 is less than the value in rs2.
+**branch if greater than or equal, unsigned** (bgeu) instruction compares the values in registers rs1 and rs2 and takes the branch if the value in rs1 is greater than or equal to the value in rs2.

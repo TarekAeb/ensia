@@ -148,7 +148,3 @@ System calls Constitutes an interface between the user (programs) and the servic
 - After each (user mode) instruction is executed, the CPU checks whether the interrupt controller has any interrupt pending. If an interrupt is there, the current process is “interrupted”, and the appropriate handler is executed.
 - Hence, after each instruction execution cycle, the processor check a flag “interrupt flag” in the FLAGS register to determine whether there is (or there are) any interrupt(s) pending. If the flag is set to 1, then at least one hardware interrupt is pending, and has to be serviced. To that end, the currently running process is interrupted and the corresponding interrupt service routine is invoked
   ![Instruction execution and interrupt cycle](image-1.png)
-
-### Context-Switching
-
-During a process turnaround time (lifetime), the process may obtain the CPU for a while to execute some of its code, lose it for a while, then get it back to continue its execution till it terminates. Each time the process is interrupted to give the CPU to another process to execute, and then resumed to continue executing.
