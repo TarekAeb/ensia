@@ -171,3 +171,16 @@ end:
 **branch if greater than or equal (bge)** instruction compares the values in registers rs1 and rs2 and takes the branch if the value in rs1 is greater than or equal to the value in rs2.
 **branch if less than,unsigned** (bltu) instruction compares the values in registers rs1 and rs2 and takes the branch if the value in rs1 is less than the value in rs2.
 **branch if greater than or equal, unsigned** (bgeu) instruction compares the values in registers rs1 and rs2 and takes the branch if the value in rs1 is greater than or equal to the value in rs2.
+
+### Supporting procedures:
+
+RISC-V has a complete set of instructions for procedure calls and returns. The `jal` instruction is used to jump to a procedure and save the return address in a register. The `jalr` instruction is used to jump to a procedure and save the return address in a register and jump to the address in another register.
+
+### Using more registers:
+
+RISC-V has 32 registers, but it is possible to use more than 32 registers by using the stack. The stack is a region of memory that is used to store temporary variables. The stack grows from high memory to low memory. The stack pointer register points to the top of the stack. The stack pointer register is x2.
+
+• procedures that do not call others are called leaf procedures.
+• Procedures may invoke other procedures non-leaf procedures.
+• Recursive procedures even invoke “clones” of themselves.
+• We need to be careful when using registers when invoking non-leaf procedures.
